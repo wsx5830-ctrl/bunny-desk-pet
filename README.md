@@ -1,5 +1,12 @@
 # 兔耳小人 · 可换肤桌面宠物
 
+<p align="left">
+  <img src="https://img.shields.io/badge/version-v1.0.0-C23B3B" alt="v1.0.0">
+  <img src="https://img.shields.io/badge/skins-11-a8763e" alt="11 skins">
+  <img src="https://img.shields.io/badge/layers-11%20auto--split-4A6FA5" alt="11 layers">
+  <img src="https://img.shields.io/badge/runtime-Web%20%2B%20Windows-2e7d52" alt="runtime">
+</p>
+
 > 从**一张单层插画**，到一套可换肤的角色动画系统 —— 自动切层算法 + 声明式皮肤系统 + Web / Windows 双端运行时。
 
 <p align="center">
@@ -157,4 +164,4 @@ python tools/build_skins.py
 
 ---
 
-<sub>详细的技术难点、简历话术与面试讲法见 <a href="作品集/兔耳桌宠-项目案例.md">项目案例文档</a>。</sub>
+<sub>独立开发 · <b>Wang Shuxin</b> ｜ 详细的技术难点、简历话术与面试讲法见 <a href="作品集/兔耳桌宠-项目案例.md">项目案例文档</a>。</sub>
