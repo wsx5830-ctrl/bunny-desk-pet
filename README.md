@@ -56,6 +56,11 @@ powershell -ExecutionPolicy Bypass -File pet-assets/deskpet/DeskPet.ps1
 
 ## 效果
 
+<p align="center">
+  <img src="docs/images/demo.gif" alt="实机演示：待机闲聊 / 戳一戳 / 拖拽坠落 / 一键换肤" width="460">
+</p>
+<p align="center"><sub>实机演示：待机闲聊 → 戳一戳 → 拖拽悬空 → 松手坠落 → 一键换肤（含换肤台词与皮肤能力标注）</sub></p>
+
 | 抠图母版（算法输入） | 连通域切分中间产物 |
 |---|---|
 | ![](docs/images/cut_master.png) | ![](docs/images/segmentation.png) |

@@ -12,6 +12,11 @@ pet-assets/deskpet/pet-state.json
 # ---- 本地诊断日志 ----
 push-log.txt
 
+# ---- GIF 录制临时产物 ----
+_gif_frames/
+_edgeprofile/
+_shot_test.png
+
 # ---- Python ----
 __pycache__/
 *.py[cod]
