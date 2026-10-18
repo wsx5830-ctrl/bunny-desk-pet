@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兔耳小人 · 可换肤桌面宠物 — 作品集案例</title>
+<style>
+  :root{
+    --ink:#2b2622; --ink2:#6b6158; --line:#e8e0d6; --bg:#faf7f2;
+    --card:#ffffff; --accent:#C23B3B; --accent-soft:#fdeeee;
+    --ok:#2e7d52; --tag:#f3ede4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
+  .wrap{max-width:980px;margin:0 auto;padding:0 28px 80px}
+  /* hero */
+  .hero{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+  .kicker{font-size:13px;letter-spacing:.22em;color:var(--accent);font-weight:600;margin-bottom:14px}
+  h1{font-size:40px;line-height:1.25;font-weight:700;letter-spacing:.01em}
+  .sub{margin-top:16px;font-size:17px;color:var(--ink2);max-width:720px}
+  .tags{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+  .tag{background:var(--tag);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--ink2)}
+  .stats{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .stat b{display:block;font-size:30px;font-weight:700;color:var(--accent);line-height:1.1}
+  .stat span{font-size:13px;color:var(--ink2)}
+  section{padding:52px 0 8px}
+  h2{font-size:24px;font-weight:700;margin-bottom:8px}
+  h2 .no{color:var(--accent);margin-right:10px;font-variant-numeric:tabular-nums}
+  .lead{color:var(--ink2);font-size:15px;margin-bottom:26px;max-width:760px}
+  /* 展示图 */
+  .shot{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .shot img{width:100%;display:block}
+  .shot .cap{padding:12px 18px;font-size:13px;color:var(--ink2);border-top:1px solid var(--line)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  /* 流程 */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px;position:relative}
+  .step::before{counter-increment:step;content:"0" counter(step);font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.1em}
+  .step h3{font-size:16px;margin:8px 0 6px}
+  .step p{font-size:13px;color:var(--ink2)}
+  /* 难点卡片 */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+  .card h3{font-size:16px;margin-bottom:8px}
+  .card .q{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:6px}
+  .card p{font-size:13.5px;color:var(--ink2)}
+  /* 表格 */
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14px}
+  th{background:#f4efe7;text-align:left;padding:12px 16px;font-size:13px;color:var(--ink2);font-weight:600}
+  td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top}
+  td b{font-weight:600}
+  td .must{color:var(--accent);font-size:12px;font-weight:700;margin-left:6px}
+  /* 话术块 */
+  .bullets{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 24px}
+  .bullets li{padding:12px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+  .bullets li:last-child{border-bottom:none}
+  .bullets b{color:var(--accent)}
+  .talk{background:#fff;border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 22px;margin-top:16px;font-size:14px;color:var(--ink2)}
+  .talk p+p{margin-top:8px}
+  a{color:var(--accent)}
+  .foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:#a99e92;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media (max-width:760px){.stats,.flow{grid-template-columns:repeat(2,1fr)}.cards,.grid2{grid-template-columns:1fr}h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">PORTFOLIO / 独立项目</div>
+    <h1>兔耳小人 · 可换肤桌面宠物<br>从一张插画到一套角色动画系统</h1>
+    <p class="sub">输入只有一张画师绘制的单层插画。我用图像算法自动完成抠图与 11 层部件切分，以"描边拓扑 + 枢轴旋转"替代 Live2D 实现骨骼动画，并设计声明式皮肤系统——新增一套皮肤只需一条命令。同一套资产同时驱动网页版与 Windows 桌面端。</p>
+    <div class="tags">
+      <span class="tag">图像算法 / 自动切层</span>
+      <span class="tag">角色动画</span>
+      <span class="tag">声明式皮肤系统</span>
+      <span class="tag">WPF 桌面应用</span>
+      <span class="tag">Web 前端</span>
+      <span class="tag">无头测试</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>11</b><span>套皮肤 · 一条命令接入</span></div>
+      <div class="stat"><b>11 层</b><span>单图自动切分部件</span></div>
+      <div class="stat"><b>111</b><span>条状态机台词</span></div>
+      <div class="stat"><b>2 端</b><span>同一资产驱动 Web + WPF</span></div>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="no">01</span>成品</h2>
+    <p class="lead">11 套皮肤全部由自动流水线从画师原图生成， 支持 8 种交互状态（待机 / 戳 / 拖拽 / 坠落 / 睡眠 / 醒来 / 行走 / 闲聊），闲聊内容由状态机 + 冷却权重表驱动。</p>
+    <div class="shot">
+      <img src="assets/preview-11skins.png" alt="11 套皮肤全家福">
+      <div class="cap">11 套皮肤全家福（括号内为各皮肤自动切分的图层数） · 网页版在线体验：https://bunny-desk-pet.app.workbuddy.host/</div>
+    </div>
+    <div class="grid2">
+      <div class="shot">
+        <img src="assets/cut_master.png" alt="抠图母版" style="max-height:340px;object-fit:contain;background:#fff">
+        <div class="cap">起点：画师给的白底单张插画 → 边缘洪水填充抠图，内部白色（短裤、眼睛高光）完整保留</div>
+      </div>
+      <div class="shot">
+        <img src="assets/rotate_test.png" alt="耳朵旋转测试" style="max-height:340px;object-fit:contain;background:#fff">
+        <div class="cap">终点：部件围绕枢轴独立运动，耳朵摆动无阴影残留、无接缝</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">02</span>技术路线：为什么不用 Live2D</h2>
+    <p class="lead">目标效果介于"序列帧"和"Live2D"之间。序列帧体积大、无法换肤；Live2D 学习成本高且要求分层源文件——但手头只有一张合层图。于是选择第三条路：用算法把合层图"逆向分层"，再用轻量的枢轴旋转模拟骨骼。</p>
+    <div class="flow">
+      <div class="step"><h3>自动抠图</h3><p>边缘洪水填充 + alpha 通道检查，区分背景白与内容白。</p></div>
+      <div class="step"><h3>自动切层</h3><p>按"闭合暗色描边"拓扑切分：阈值 → 腐蚀断桥 → 连通域 → 距离变换测厚 → 最近邻归属。</p></div>
+      <div class="step"><h3>骨骼与动画</h3><p>每层一个 pivot，绕耳根 / 眼心 / 腰线旋转；呼吸、眨眼、点头、头发摆动分层叠加。</p></div>
+      <div class="step"><h3>双端运行时</h3><p>skin.json 一份配置，同时驱动 Web DOM 动画与 PowerShell/WPF 透明置顶窗口。</p></div>
+    </div>
+    <div class="shot" style="margin-top:16px;max-width:300px">
+      <img src="assets/segmentation.png" alt="连通域切分调试图" style="max-height:280px;object-fit:contain;background:#fff">
+      <div class="cap">切层算法中间产物：暗色描边连通域着色调试图——每个色块即一个候选部件</div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">03</span>四个值得一提的工程难点</h2>
+    <p class="lead">作品集里最有含金量的部分不是"做了什么"，而是"遇到什么、怎么判断、怎么修"。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="q">难点 · 无法按颜色分层</div>
+        <h3>靠"描边拓扑"而不是颜色切层</h3>
+        <p>角色皮肤、兔耳、短裤全是白色系，颜色聚类完全失效。改为利用画师的描边习惯：每个部件都被闭合的暗色轮廓包围。以 V&lt;150 提取暗色像素，形态学腐蚀切断抗锯齿像素的"桥接"，再用连通域 + 距离变换（测描边厚度）区分"描边"与"大面积暗色填充（头发）"。11 层切分结果重组后与原图逐像素几乎一致。</p>
+      </div>
+      <div class="card">
+        <div class="q">修复 · 一个过滤器引发两个 bug</div>
+        <h3>用"厚度 + 面积"约束灰影过滤器</h3>
+        <p>耳层切出后带灰色阴影条，加了"低饱和灰"过滤器清除；但同一过滤器把蓝色贝雷帽（低饱和大色块）也误杀成透明。修复方式：灰色过滤只对<b>厚度 &lt; 10px 且面积 &lt; 300px²</b> 的细条带生效——一次修复同时解决阴影残留与帽子透明两个线上问题。</p>
+      </div>
+      <div class="card">
+        <div class="q">修复 · WPF 变换覆盖</div>
+        <h3>基础缩放与挤压动画分层</h3>
+        <p>拖拽挤压（squash &amp; stretch）每帧把 ScaleX 写进同一 RenderTransform，覆盖了 640→160px 的基础缩放，角色瞬间放大到只露一角。拆成两层变换：stage 节点管基础缩放，petCanvas 节点管每帧挤压，二者相乘互不污染。</p>
+      </div>
+      <div class="card">
+        <div class="q">质量保障</div>
+        <h3>jsdom 无头回归 + 对话状态机</h3>
+        <p>为拖拽（位移 dx≈106/dy≈318）与 11 套皮肤加载写 jsdom 无头测试，0 运行时错误；111 条台词按状态（idle/poke/drag/fall/sleep/wake）+ 权重 + 冷却秒数构成状态机，通用池与皮肤专属池合并去重，杜绝连续复读同一句。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="no">04</span>项目留存清单 <span style="font-size:14px;color:var(--ink2);font-weight:400">（作品集需要存什么）</span></h2>
+    <p class="lead">面试官看的不只是结果，更是过程是否可追溯。以下 7 类材料建议全部归档：</p>
+    <table>
+      <tr><th style="width:150px">类别</th><th>内容</th><th style="width:230px">用途</th></tr>
+      <tr><td><b>① 代码仓库</b><span class="must">必须</span></td><td>git init 全项目并按阶段提交——提交历史本身就是"过程记录"的证据</td><td>GitHub 链接放简历</td></tr>
+      <tr><td><b>② 案例文档</b><span class="must">必须</span></td><td>本页 + 同目录《项目案例.md》，STAR 结构，可转 PDF</td><td>作品集 / 面试附件</td></tr>
+      <tr><td><b>③ 演示视频</b><span class="must">必须</span></td><td>15–30s 录屏：拖拽 → 坠落 → 睡眠 → 换肤 → 说话（ScreenToGif / OBS）</td><td>简历附 GIF 或二维码</td></tr>
+      <tr><td><b>④ 在线可点链接</b></td><td>网页版 https://bunny-desk-pet.app.workbuddy.host/（面试官 10 秒内可玩到）</td><td>简历"链接"栏</td></tr>
+      <tr><td><b>⑤ 可下载成品</b></td><td>兔耳小人桌宠.zip（4.5MB，解压即用）</td><td>证明交付能力</td></tr>
+      <tr><td><b>⑥ 过程截图</b></td><td>抠图前后、连通域调试图、耳朵旋转测试、修复前后对比、WPF 桌面实拍</td><td>面试讲技术细节时的视觉支撑</td></tr>
+      <tr><td><b>⑦ 数据资产</b></td><td>台词表.csv（111 条）、皮肤层数统计、assets/ 目录（已归档于本目录）</td><td>量化成果的出处</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="no">05</span>简历与面试话术</h2>
+    <p class="lead">同一件事，按目标岗位侧重不同写法（简历 bullet）：</p>
+    <ul class="bullets">
+      <li><b>算法向：</b>设计"描边拓扑 + 形态学"图像切层算法，将单张插画自动逆向分层为 11 个带枢轴的部件，替代人工分层，支撑 11 套皮肤流水线化接入。</li>
+      <li><b>前端向：</b>基于声明式 skin.json 的皮肤与动画系统，一份资产同时驱动 Web 与 WPF 双端；含状态机台词、物理坠落、挤压拉伸等 8 种交互状态。</li>
+      <li><b>工程向：</b>从 0 独立交付桌面宠物产品：自动切层流水线 → 皮肤系统 → WPF 桌面端（零依赖）→ 静态站点部署 → jsdom 无头回归测试 → 4.5MB 分发包。</li>
+    </ul>
+    <div class="talk">
+      <p><b>面试 3 分钟讲法：</b>① 一句话结果（30s）：把一张插画做成可换肤桌宠，双端上线；② 最难的一件事（90s）：颜色无法分层 → 观察描边闭合特征 → 腐蚀断桥 + 厚度测量的推理过程，重点讲"灰色过滤器误杀蓝帽子"这类取舍；③ 数据与验证（60s）：重组像素级一致、11 套皮肤 0 报错、111 条台词状态机。</p>
+    </div>
+  </section>
+
+  <div class="foot">
+    <span>兔耳小人 · 可换肤桌面宠物 — 作品集案例</span>
+    <span>归档日期 2026-10-18 · 本页可整页截图 / 打印为 PDF / 部署上线</span>
+  </div>
+</div>
+</body>
+</html>
