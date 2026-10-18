@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>桌宠 V0 演示 —— 兔耳小人</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body {
+    background: #DCD7CE;
+    font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+    user-select: none;
+    cursor: default;
+  }
+  #taskbar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 44px;
+    background: #F4F1EB; border-top: 1px solid #C9C4BA;
+    display: flex; align-items: center; padding: 0 16px;
+    color: #6B675F; font-size: 13px; gap: 8px;
+  }
+  #taskbar .dot { width: 8px; height: 8px; border-radius: 50%; background: #C23B3B; }
+  #pet {
+    position: absolute;
+    width: 190px;
+    cursor: grab;
+    transform-origin: bottom center;
+    will-change: transform, left, top;
+  }
+  #pet:active { cursor: grabbing; }
+  #pet img {
+    width: 100%; display: block;
+    -webkit-user-drag: none;
+    filter: drop-shadow(0 6px 8px rgba(60,55,45,.25));
+  }
+  body.idle #pet img { animation: breathe 2.5s ease-in-out infinite; }
+  @keyframes breathe {
+    0%, 100% { transform: scaleY(1) scaleX(1); }
+    50% { transform: scaleY(1.015) scaleX(.995); }
+  }
+  body.poke #pet img { animation: poke .5s cubic-bezier(.3,1.6,.5,1) 1; }
+  @keyframes poke {
+    0% { transform: scale(1,1); }
+    30% { transform: scale(1.12,.86) translateY(6px); }
+    60% { transform: scale(.94,1.08) translateY(-8px); }
+    100% { transform: scale(1,1); }
+  }
+  body.sleep #pet img { animation: breathe 4s ease-in-out infinite; filter: brightness(.72) saturate(.7) drop-shadow(0 6px 8px rgba(60,55,45,.25)); }
+  #zzz {
+    position: absolute; right: -6px; top: -14px;
+    font-size: 20px; font-weight: 500; color: #6B675F;
+    opacity: 0; pointer-events: none;
+  }
+  body.sleep #zzz { animation: zzz 2.4s ease-in-out infinite; }
+  @keyframes zzz {
+    0% { opacity: 0; transform: translate(0,0); }
+    30% { opacity: .9; }
+    100% { opacity: 0; transform: translate(16px,-26px); }
+  }
+  #bubble {
+    position: absolute; left: 50%; bottom: calc(100% + 14px);
+    transform: translateX(-50%) translateY(6px) scale(.9);
+    background: #FFFFFF; border: 1px solid #C9C4BA; border-radius: 12px;
+    padding: 7px 12px; font-size: 13px; color: #3A372F;
+    white-space: nowrap; opacity: 0; pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  #bubble.show { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  #bubble::after {
+    content: ""; position: absolute; left: 50%; bottom: -5px;
+    width: 8px; height: 8px; background: #FFFFFF;
+    border-right: 1px solid #C9C4BA; border-bottom: 1px solid #C9C4BA;
+    transform: translateX(-50%) rotate(45deg);
+  }
+  #hint {
+    position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    color: #6B675F; font-size: 13px; background: rgba(255,255,255,.7);
+    border: 1px solid #C9C4BA; border-radius: 12px; padding: 8px 16px;
+  }
+</style>
+</head>
+<body class="idle">
+<div id="hint">拖拽它甩出去 · 单击戳一戳 · 不理它 20 秒它会睡着</div>
+<div id="pet">
+  <img src="character/idle_01.png" alt="兔耳小人" draggable="false">
+  <div id="zzz">Z z z</div>
+  <div id="bubble"></div>
+</div>
+<div id="taskbar"><span class="dot"></span><span>桌宠 V0 —— 兔耳小人 · idle / poke / drag / fall / sleep 状态机演示</span></div>
+
+<script>
+const pet = document.getElementById("pet");
+const bubble = document.getElementById("bubble");
+const stage = document.body;
+
+const QUOTES = {
+  idle: ["好无聊啊，戳我一下嘛", "（盯着你的屏幕看）", "今天也要加油哦", "兔耳朵好看嘛？"],
+  poke: ["干嘛啦！", "嘿嘿，手好痒", "比心比心", "再戳要生气了哦"],
+  drag: ["哇啊啊要掉下去了", "放开我，放开我", "耳朵要飞出去了"],
+  fall: ["哎哟！", "下次轻一点嘛"],
+};
+
+const W = 190, GRAVITY = 2400, FLOOR_PAD = 44, BOUNCE = 0.35, AIR = 0.995;
+let x = innerWidth / 2, y = 300;      // y = 脚底位置
+let vx = 0, vy = 0;
+let state = "fall";                    // idle | poke | drag | fall | sleep
+let dragging = false, moved = false;
+let lastPointer = null, lastT = 0;
+let sleepTimer = null, idleQuoteTimer = null, bubbleTimer = null;
+
+const floorY = () => innerHeight - FLOOR_PAD;
+
+function setBodyState(s) {
+  document.body.classList.remove("idle", "poke", "sleep");
+  if (s === "idle" || s === "poke") document.body.classList.add(s);
+  if (s === "sleep") document.body.classList.add("sleep");
+}
+
+function say(text, ms = 2200) {
+  bubble.textContent = text;
+  bubble.classList.add("show");
+  clearTimeout(bubbleTimer);
+  bubbleTimer = setTimeout(() => bubble.classList.remove("show"), ms);
+}
+
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function scheduleIdleQuote() {
+  clearTimeout(idleQuoteTimer);
+  idleQuoteTimer = setTimeout(() => {
+    if (state === "idle") say(pick(QUOTES.idle));
+    scheduleIdleQuote();
+  }, 12000 + Math.random() * 8000);
+}
+
+function wake() {
+  clearTimeout(sleepTimer);
+  if (state === "sleep") { setBodyState("idle"); state = "idle"; }
+  sleepTimer = setTimeout(() => {
+    if (state === "idle") { state = "sleep"; setBodyState("sleep"); say("Zzz……", 1500); }
+  }, 20000);
+}
+
+function render(tilt = 0, squash = 1) {
+  pet.style.left = (x - W / 2) + "px";
+  pet.style.top = (y - pet.offsetHeight) + "px";
+  pet.style.transform = "rotate(" + tilt + "deg) scaleY(" + squash + ")";
+}
+
+// ---- 物理：落地与自由落体 ----
+let landed = false;
+function step(dt) {
+  if (state === "fall" && !dragging) {
+    vy += GRAVITY * dt;
+    vx *= AIR;
+    x += vx * dt;
+    y += vy * dt;
+    if (y >= floorY()) {
+      y = floorY();
+      if (Math.abs(vy) > 140 && !landed) {
+        vy = -vy * BOUNCE;
+        say(pick(QUOTES.fall), 1400);
+        landed = true;
+      } else if (Math.abs(vy) > 40) {
+        vy = -vy * BOUNCE * 0.6;
+      } else {
+        vy = 0; vx = 0; landed = false;
+        state = "idle"; setBodyState("idle"); wake();
+      }
+    }
+    if (x < W / 2) { x = W / 2; vx = Math.abs(vx) * BOUNCE; }
+    if (x > innerWidth - W / 2) { x = innerWidth - W / 2; vx = -Math.abs(vx) * BOUNCE; }
+  }
+  if (dragging && lastPointer) {
+    const t = performance.now();
+    const dt = Math.max((t - lastT) / 1000, 0.001);
+    const nx = lastPointer.x, ny = lastPointer.y + pet.offsetHeight * 0.72;
+    vx = (nx - x) / dt * 0.9;
+    vy = 0;
+    x += (nx - x) * 0.55;
+    y += (ny - y) * 0.55;
+    lastT = t;
+  }
+  const tilt = dragging ? Math.max(-14, Math.min(14, vx * 0.012)) : 0;
+  render(tilt);
+  requestAnimationFrame(step);
+}
+
+// ---- 交互 ----
+pet.addEventListener("pointerdown", (e) => {
+  pet.setPointerCapture(e.pointerId);
+  dragging = true; moved = false;
+  lastPointer = { x: e.clientX, y: e.clientY };
+  lastT = performance.now();
+  wake();
+});
+pet.addEventListener("pointermove", (e) => {
+  if (!dragging) return;
+  if (Math.hypot(e.clientX - lastPointer.x, e.clientY - lastPointer.y) > 6 && !moved) {
+    moved = true;
+    state = "drag"; setBodyState("idle");
+    if (Math.random() < 0.5) say(pick(QUOTES.drag), 1500);
+  }
+  lastPointer = { x: e.clientX, y: e.clientY };
+});
+pet.addEventListener("pointerup", () => {
+  dragging = false;
+  if (!moved) {
+    state = "poke"; setBodyState("poke");
+    say(pick(QUOTES.poke));
+    setTimeout(() => { if (state === "poke") { state = "idle"; setBodyState("idle"); } }, 520);
+  } else {
+    state = "fall"; landed = false; setBodyState("idle");
+  }
+  wake();
+});
+addEventListener("resize", () => { y = Math.min(y, floorY()); });
+
+// ---- 启动：从半空掉进来 ----
+render();
+requestAnimationFrame(step);
+scheduleIdleQuote();
+wake();
+</script>
+</body>
+</html>
