@@ -1,0 +1,19 @@
+# ---- 会话 / 工具临时文件 ----
+.workbuddy/
+*.genie
+
+# ---- 构建产物（由 tools/build_share.py 重新生成）----
+pet-assets/dist/
+
+# ---- 桌面端运行时状态 ----
+pet-assets/deskpet/_says.log
+pet-assets/deskpet/pet-state.json
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+
+# ---- 系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini
