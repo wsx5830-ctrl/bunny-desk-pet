@@ -1,0 +1,92 @@
+{
+ "id": "yigong",
+ "name": "一公 · 红外套火焰",
+ "canvas": [
+  640,
+  640
+ ],
+ "baseline": 616,
+ "accent": "#C23B3B",
+ "layers": [
+  {
+   "role": "body",
+   "src": "layers/body.png",
+   "label": "身体"
+  },
+  {
+   "role": "hand_L",
+   "src": "layers/hand_L.png",
+   "label": "左手"
+  },
+  {
+   "role": "hand_R",
+   "src": "layers/hand_R.png",
+   "label": "右手"
+  },
+  {
+   "role": "face",
+   "src": "layers/face.png",
+   "label": "脸"
+  },
+  {
+   "role": "mouth",
+   "src": "layers/mouth.png",
+   "label": "嘴"
+  },
+  {
+   "role": "eye_L",
+   "src": "layers/eye_L.png",
+   "label": "左眼"
+  },
+  {
+   "role": "eye_R",
+   "src": "layers/eye_R.png",
+   "label": "右眼"
+  },
+  {
+   "role": "hair",
+   "src": "layers/hair.png",
+   "label": "头发"
+  },
+  {
+   "role": "ear_R",
+   "src": "layers/ear_R.png",
+   "label": "右耳/右耳饰"
+  }
+ ],
+ "pivots": {
+  "body": [
+   320,
+   616
+  ],
+  "face": [
+   330,
+   534
+  ],
+  "eye_L": [
+   391,
+   488
+  ],
+  "eye_R": [
+   199,
+   498
+  ],
+  "hair": [
+   330,
+   534
+  ],
+  "ear_R": [
+   408,
+   310
+  ]
+ },
+ "quotes": {},
+ "anim": {
+  "breathe": true,
+  "blink": true,
+  "nod": true,
+  "hairSway": true,
+  "earSway": false,
+  "tailSway": false
+ }
+}

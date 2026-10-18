@@ -1,0 +1,92 @@
+{
+ "id": "casual3",
+ "name": "常服 · 棒球帽夹克",
+ "canvas": [
+  640,
+  640
+ ],
+ "baseline": 616,
+ "accent": "#3A3F4A",
+ "layers": [
+  {
+   "role": "body",
+   "src": "layers/body.png",
+   "label": "身体"
+  },
+  {
+   "role": "hand_L",
+   "src": "layers/hand_L.png",
+   "label": "左手"
+  },
+  {
+   "role": "hand_R",
+   "src": "layers/hand_R.png",
+   "label": "右手"
+  },
+  {
+   "role": "face",
+   "src": "layers/face.png",
+   "label": "脸"
+  },
+  {
+   "role": "mouth",
+   "src": "layers/mouth.png",
+   "label": "嘴"
+  },
+  {
+   "role": "eye_L",
+   "src": "layers/eye_L.png",
+   "label": "左眼"
+  },
+  {
+   "role": "eye_R",
+   "src": "layers/eye_R.png",
+   "label": "右眼"
+  },
+  {
+   "role": "hair",
+   "src": "layers/hair.png",
+   "label": "头发"
+  },
+  {
+   "role": "ear_L",
+   "src": "layers/ear_L.png",
+   "label": "左耳/左耳饰"
+  }
+ ],
+ "pivots": {
+  "body": [
+   320,
+   616
+  ],
+  "face": [
+   321,
+   455
+  ],
+  "eye_L": [
+   253,
+   364
+  ],
+  "eye_R": [
+   386,
+   362
+  ],
+  "hair": [
+   321,
+   455
+  ],
+  "ear_L": [
+   242,
+   333
+  ]
+ },
+ "quotes": {},
+ "anim": {
+  "breathe": true,
+  "blink": true,
+  "nod": true,
+  "hairSway": true,
+  "earSway": false,
+  "tailSway": false
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "id": "casual6",
+ "name": "常服 · 蓝帽背带裤",
+ "canvas": [
+  640,
+  640
+ ],
+ "baseline": 616,
+ "accent": "#7FA8D9",
+ "layers": [
+  {
+   "role": "shorts",
+   "src": "layers/shorts.png",
+   "label": "下装"
+  },
+  {
+   "role": "body",
+   "src": "layers/body.png",
+   "label": "身体"
+  },
+  {
+   "role": "hand_L",
+   "src": "layers/hand_L.png",
+   "label": "左手"
+  },
+  {
+   "role": "hand_R",
+   "src": "layers/hand_R.png",
+   "label": "右手"
+  },
+  {
+   "role": "face",
+   "src": "layers/face.png",
+   "label": "脸"
+  },
+  {
+   "role": "mouth",
+   "src": "layers/mouth.png",
+   "label": "嘴"
+  },
+  {
+   "role": "eye_L",
+   "src": "layers/eye_L.png",
+   "label": "左眼"
+  },
+  {
+   "role": "hair",
+   "src": "layers/hair.png",
+   "label": "头发"
+  },
+  {
+   "role": "ear_L",
+   "src": "layers/ear_L.png",
+   "label": "左耳/左耳饰"
+  },
+  {
+   "role": "ear_R",
+   "src": "layers/ear_R.png",
+   "label": "右耳/右耳饰"
+  }
+ ],
+ "pivots": {
+  "body": [
+   320,
+   616
+  ],
+  "face": [
+   321,
+   460
+  ],
+  "eye_L": [
+   401,
+   453
+  ],
+  "hair": [
+   321,
+   460
+  ],
+  "ear_L": [
+   230,
+   340
+  ],
+  "ear_R": [
+   377,
+   338
+  ]
+ },
+ "quotes": {},
+ "anim": {
+  "breathe": true,
+  "blink": false,
+  "nod": true,
+  "hairSway": true,
+  "earSway": false,
+  "tailSway": false
+ }
+}

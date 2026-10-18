@@ -1,0 +1,101 @@
+{
+ "id": "hanlin",
+ "name": "翰林校服",
+ "canvas": [
+  640,
+  640
+ ],
+ "baseline": 616,
+ "accent": "#2C3A5C",
+ "layers": [
+  {
+   "role": "body",
+   "src": "layers/body.png",
+   "label": "身体"
+  },
+  {
+   "role": "hand_L",
+   "src": "layers/hand_L.png",
+   "label": "左手"
+  },
+  {
+   "role": "hand_R",
+   "src": "layers/hand_R.png",
+   "label": "右手"
+  },
+  {
+   "role": "face",
+   "src": "layers/face.png",
+   "label": "脸"
+  },
+  {
+   "role": "mouth",
+   "src": "layers/mouth.png",
+   "label": "嘴"
+  },
+  {
+   "role": "eye_L",
+   "src": "layers/eye_L.png",
+   "label": "左眼"
+  },
+  {
+   "role": "eye_R",
+   "src": "layers/eye_R.png",
+   "label": "右眼"
+  },
+  {
+   "role": "hair",
+   "src": "layers/hair.png",
+   "label": "头发"
+  },
+  {
+   "role": "ear_L",
+   "src": "layers/ear_L.png",
+   "label": "左耳/左耳饰"
+  },
+  {
+   "role": "ear_R",
+   "src": "layers/ear_R.png",
+   "label": "右耳/右耳饰"
+  }
+ ],
+ "pivots": {
+  "body": [
+   320,
+   616
+  ],
+  "face": [
+   321,
+   456
+  ],
+  "eye_L": [
+   254,
+   366
+  ],
+  "eye_R": [
+   386,
+   366
+  ],
+  "hair": [
+   321,
+   456
+  ],
+  "ear_L": [
+   243,
+   306
+  ],
+  "ear_R": [
+   395,
+   327
+  ]
+ },
+ "quotes": {},
+ "anim": {
+  "breathe": true,
+  "blink": true,
+  "nod": true,
+  "hairSway": true,
+  "earSway": false,
+  "tailSway": false
+ }
+}
