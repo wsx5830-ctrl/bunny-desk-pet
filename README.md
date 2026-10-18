@@ -58,10 +58,10 @@ powershell -ExecutionPolicy Bypass -File pet-assets/deskpet/DeskPet.ps1
 
 | 抠图母版（算法输入） | 连通域切分中间产物 |
 |---|---|
-| ![](作品集/assets/cut_master.png) | ![](docs/images/segmentation.png) |
+| ![](docs/images/cut_master.png) | ![](docs/images/segmentation.png) |
 
 <p align="center">
-  <img src="作品集/assets/rotate_test.png" alt="部件枢轴旋转" width="420">
+  <img src="docs/images/rotate-test.png" alt="部件枢轴旋转" width="420">
   <br><sub>部件围绕枢轴独立运动，耳朵摆动无阴影残留、无接缝</sub>
 </p>
 
